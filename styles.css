@@ -1,0 +1,637 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    background-color: #f4f4f4;
+    color: #000000;
+    
+}
+
+header {
+    background-color: #333;
+    color: #fff;
+    padding: 1rem;
+    text-align: center;
+    
+}
+ 
+
+nav ul {
+    list-style: none;
+}  
+
+nav ul li {
+
+    display: inline;
+    margin: 0 15px;
+    
+
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+}
+
+
+/* Fondo principal de cada html de los animales (cambiar).*/
+
+/* Aves */
+.h1 {
+    background: url(aves.jpg) no-repeat center center/cover;
+    color: white;
+    height: 400px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+}
+/* Anfibios */
+.h2 {
+    background: url(leoncitos.jpg) no-repeat center center/cover;
+    color: white;
+    height: 400px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+}
+/* Mamifero */
+.h3 {
+    background: url(mamiferos.jpg) no-repeat center center/cover;
+    color: white;
+    height: 400px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+}
+/* Reptiles */
+.h4 {
+    background: url(reptiles.jpg) no-repeat center center/cover;
+    color: white;
+    height: 400px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+}
+/* Fondo principal */
+.hero {
+    position: relative;
+    width: 100%;
+    height: 750px;
+    overflow: hidden;
+    
+}
+#hero-video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    z-index: -1;
+    transform: translate(-50%, -50%);
+    object-fit: cover;
+  }
+  
+.hero-content {
+    position: relative;
+    z-index: 1;
+    color: white;
+    text-align: center;
+  }
+.hero h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.content {
+    padding: 2rem;
+    text-align: center;
+}
+
+.grid {
+    display: flex;
+    justify-content: space-around;
+}
+
+.animal-card {
+    background-color: rgb(255, 255, 255);
+    padding: 1rem;
+    border-radius: 8px;
+    width: 300px;
+    box-shadow: 2 5px 20px rgb(0, 0, 0);
+}
+
+.animal-card img {
+    width: 260px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 50px;
+   
+}
+
+.animal-card h3 {
+    margin: 0.5rem 0;
+}
+
+.video-section {
+    text-align: center;
+    padding: 2rem;
+}
+
+.contact-section {
+    background-color: #f0f0f0;
+    padding: 2rem;
+    text-align: center;
+}
+
+footer {
+    background-color: #ffffff;
+    color: rgb(0, 0, 0);
+    padding: 0.3rem;
+    text-align: center;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+input, textarea {
+    width: 80%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+button {
+    padding: 10px 20px;
+    background-color: #333;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+button:hover {
+    background-color: #555;
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.4);
+}
+
+/* Estilos de navegación y drop-down */
+nav {
+    position: relative;
+    z-index: 10; /* Asegura que esté por encima del video */
+  }
+  
+  .hero {
+    position: relative;
+    z-index: 1; /* Asegura que el video esté detrás */
+  }
+  
+nav ul {
+    list-style: none;
+    padding: 0;
+}
+
+nav ul li {
+    display: inline-block;
+    position: relative;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    padding: 1rem;
+    display: block;
+    background-color: transparent;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Resaltar el menú principal al pasar el cursor */
+nav ul li:hover > a {
+    background-color: rgb(255, 255, 255); /* Fondo blanco al pasar el cursor */
+    color: #000000; /* Color de texto oscuro para contraste */
+    border-radius: 25px;
+}
+
+
+/* Ocultar barra desplegable por defecto */
+.dropdown {
+    display: none;
+    position: absolute;
+    background-color: #333;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    top: 100%;
+    left: 0;
+    width: 150px;
+}
+
+.dropdown li {
+    width: 150px;
+    text-align: left;
+}
+
+.dropdown li a {
+    padding: 0.5rem 1rem;
+    display: block;
+    color: rgb(255, 255, 255);
+    text-decoration: none;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+/* color de la barra desplegable */
+.dropdown li a:hover {
+    background-color: #ffffff;
+    color: #000000
+    
+}
+
+/* Para mostrar el menú cuando está activo */
+nav ul li:hover .dropdown {
+    display: block;
+}
+
+/* Añadir transición suave al mostrar el menú desplegable */
+.dropdown {
+    transition: all 0.3s ease;
+}
+
+/* Para mostrar el leon flotante */
+.animal-card {
+    position: relative;
+    width: 300px;
+    background-color: rgb(255, 255, 255);
+    padding: 1rem;
+    box-shadow: 0 4px 8px rgba(99, 99, 99, 0.2);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+/* Imagen del animal */
+.animal-img {
+    width: 50%;
+    height: auto;
+    border-radius: 5px;
+}
+
+/* Imagen flotante, inicialmente oculta */
+.floating-img {
+    position: absolute;
+    top: 100px; /* Ajusta la posición vertical */
+    left: 50%; /* Centra horizontalmente */
+    transform: translateX(-50%);
+    width: 100px; /* Ajusta el tamaño de la imagen flotante */
+    display: none;
+    
+    transition: all 0.3s ease;
+}
+
+/* Mostrar la imagen flotante cuando se hace hover en la imagen principal */
+.animal-card:hover .floating-img {
+    display: block;
+    top: 10px; /* Mueve la imagen hacia abajo cuando se hace hover */
+}
+
+/* Contenedor del encabezado */
+.header-container {
+    display: flex;
+    flex-direction: column; /* Coloca los elementos (buscador y título) en columna */
+    align-items: center; /* Centra horizontalmente los elementos */
+    padding: 20px;
+}
+
+/* Título */
+.titulo {
+    font-size: 30px;
+    margin-top: 20px; /* Espacio entre el buscador y el título */
+}
+
+
+/* Ajustes para dispositivos móviles */
+@media (max-width: 768px) {
+    .search-bar input[type="text"] {
+        width: 150px;
+    }
+
+    .search-bar input[type="text"]:focus {
+        width: 200px;
+    }
+}
+
+/* Mapamundi*/
+.animal-info img {
+    width: 300px; /* Tamaño de las imágenes */
+    height: auto;
+    margin-right: 10px;
+    vertical-align: middle;
+}
+
+#map {
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* ALBUM DE fotografia */
+
+/* Estilos generales */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #fafafa;
+    margin: 0;
+    padding: 0;
+}
+
+h1 {
+    font-size: 3rem;
+    margin: 0;
+}
+
+p {
+    font-size: 1.2rem;
+    margin: 0.5rem 0 0;
+}
+
+/* Estilos para la galería de fotos */
+
+.photo-gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 30px;
+    padding: 0.01px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.photo-item {
+    position: relative;
+    overflow: hidden;
+    border-radius: 20px;
+    box-shadow: 0 5px 20px rgba(255, 255, 255, 0.418);
+}
+
+.photo-item img {
+    width: 250%;
+    height: auto;
+    transition: transform 0.10s ease;
+    cursor: pointer;
+}
+
+.photo-item:hover img {
+    transform: scale(1.1);
+}
+
+/* Estilos para el modal (slider) */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    padding-top: 60px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.829);
+}
+
+.modal-content {
+    margin: auto;
+    display: block;
+    width: 80%;
+    max-width: 900px;
+}
+
+.modal img {
+    width: 100%;
+    border-radius: 10px;
+}
+
+.modal-navigation {
+    position: absolute;
+    top: 50%;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 10px;
+    color: white;
+    font-size: 2rem;
+}
+
+.prev, .next {
+    cursor: pointer;
+    user-select: none;
+}
+
+.close-modal {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    font-size: 3rem;
+    color: white;
+    cursor: pointer;
+}
+
+.menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: #333;
+    padding: 1em;
+    text-align: center;
+    transition: top 0.5s; /* Agregamos una transición para que el menú se deslice suavemente */
+  }
+  
+  
+/* Estilos generales */
+body {
+    font-family: 'Roboto', sans-serif;
+    line-height: 1.6;
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+/* Estilos para los títulos */
+h3 {
+    font-family: 'Playfair Display', serif;
+    color: #2c3e50;
+    margin-bottom: 1rem;
+}
+
+h1 {
+    font-size: 3rem;
+    text-align: center;
+    margin-top: 1.5rem;
+}
+
+h2 {
+    font-size: 2.5rem;
+}
+
+h3 {
+    font-size: 2.5rem;
+}
+
+/* Texto normal */
+p {
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+}
+ 
+
+p {
+    font-size: 1.5rem;
+    font-style: italic;
+}
+
+
+/* Album sobre los animales historicos*/
+
+.album {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    padding: 20px;
+  }
+  
+  .photo-card {
+    position: relative;
+    overflow: hidden;
+    border-radius: 15px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    perspective: 1000px;
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+  }
+  
+  .photo-card img {
+    width: 100%;
+    height: auto;
+    transition: transform 0.5s ease, filter 0.3s ease;
+    border-radius: 8px;
+  }
+  
+  .photo-card:hover {
+    transform: rotateY(10deg) rotateX(5deg);
+    box-shadow: 0 15px 25px rgba(0, 0, 0, 0.3);
+  }
+  
+  .photo-card:hover img {
+    transform: scale(1.1);
+    filter: brightness(0.8);
+  }
+  
+  .info {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    color: white;
+    text-align: center;
+    padding: 10px;
+    opacity: 0;
+    transform: translateY(100%);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+  }
+  
+  .photo-card:hover .info {
+    opacity: 1;
+    transform: translateY(0);
+  }
+ 
+  /* Album video*/
+  
+  
+  .album-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    gap: 30px;
+    padding: 40px;
+  }
+  
+  .video-card {
+    background-color: #f4f4f4;
+    border-radius: 15px;
+    overflow: hidden;
+    width: 300px;
+    text-align: center;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .video-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+  }
+  
+  .video-card video {
+    width: 100%;
+    border-bottom: 2px solid #ddd;
+  }
+  
+  .video-title {
+    padding: 15px;
+    font-size: 1.2rem;
+    color: #333;
+    background-color: #fff;
+    border-radius: 0 0 15px 15px;
+    font-weight: bold;
+  }
+  
+
+
+/* fondo de ola */
+  
+.wrapper {
+    width: 100%;
+    height: 100%;
+    --s: 100px; 
+    --c1: #4A1A29;
+    --c2: #004643;
+  
+    --_g: var(--c2) 6% 14%, var(--c1) 16% 24%, var(--c2) 26% 34%,
+      var(--c1) 36% 44%, var(--c2) 46% 54%, var(--c1) 56% 64%, var(--c2) 66% 74%,
+      var(--c1) 76% 84%, var(--c2) 86% 94%;
+    background: radial-gradient(
+        100% 100% at 100% 0,
+        var(--c1) 4%,
+        var(--_g),
+        rgba(0, 0, 0, 0.533) 96%,
+        #0000
+      ),
+      radial-gradient(
+          100% 100% at 0 100%,
+          #d3321d00,
+          #0008 4%,
+          var(--_g),
+          var(--c1) 96%
+        )
+        var(--c1);
+    background-size: var(--s) var(--s);
+  }
+
+
+
+
+  
+ 
+  
+  
+  
+ 
