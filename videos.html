@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Documental sobre la vida salvaje y los animales más impresionantes del planeta.">
+    <title>Documental de Animales</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <br><br><br><br><br><br><br>
+        <nav class="menu">
+          <div class="wrapper">
+            <h1>Álbum de Videos</h1>
+            <nav>
+                <ul>
+                    <li><a href="tex.html">Inicio</a></li>
+                <li><a href="#" id="animalesLink">Animales</a>
+                    <ul class="dropdown" id="animalDropdown">
+    
+                        <li><a href="mamiferos.html">Mamíferos</a></li>
+                        <li><a href="aves.html">Aves</a></li>
+                        <li><a href="reptiles.html">Reptiles</a></li>
+                        <li><a href="anfibios.html">Anfibios</a></li>
+                        
+                    </ul>
+                </li>
+                <li><a href="Animales que hicieron historia.html">Famosos</a></li>
+            <li><a href="prehistoricos.html">Prehistóricos</a></li>
+                <li><a href="mapa.html">Mapa</a></li>
+                <li><a href="#" id="animalesLink">Multimedia</a>
+                    <ul class="dropdown" id="animalDropdown">
+                        <li><a href="album.html">Imagenes</a></li>
+                        <li><a href="videos.html">Videos</a></li>
+                
+            </ul>
+        </nav>
+    </nav>
+        <head>
+          <meta charset="UTF-8">
+          <meta name="viewport" content="width=device-width, initial-scale=1.0">
+          <style>
+              body {
+                  background-color: rgb(207, 207, 207); /*aca pones el color que quieres */
+              }
+  
+          </style>
+        </head>
+    
+    <div class="album-container">
+        <div class="video-card">
+          <video controls>
+            <source src="Trailer Animales Salvaje.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+          <div class="video-title">Texto</div>
+        </div>
+        <div class="video-card">
+          <video controls>
+            <source src="portada inicial.webm" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+          <div class="video-title">Texto</div>
+        </div>
+        <div class="video-card">
+          <video controls>
+            <source src="Trailer Animales Salvaje.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+          <div class="video-title">Texto</div>
+        </div>
+      </div>
+
+      
+      <script>
+        document.querySelectorAll('video').forEach(video => {
+          video.addEventListener('play', function() {
+            document.querySelectorAll('video').forEach(v => {
+              if (v !== video) {
+                v.pause();
+              }
+            });
+          });
+        });
+      </script>
+
+        
+            
+            
+            
+    
+        <footer>
+            <p>&copy; 2024 Documental de la Vida Salvaje. Creado por Marco y Carlos.</p>
+        </footer>
+    
+</header>
+</body>
+</html>

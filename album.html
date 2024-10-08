@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Documental sobre la vida salvaje y los animales más impresionantes del planeta.">
+    <title>Documental de Animales</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <br><br><br><br><br><br><br>
+        <nav class="menu">
+            <div class="wrapper">
+            <h1>Álbum de Fotografías</h1>
+            <nav>
+                <ul>
+                    <li><a href="tex.html">Inicio</a></li>
+                <li><a href="#" id="animalesLink">Animales</a>
+                    <ul class="dropdown" id="animalDropdown">
+    
+                        <li><a href="mamiferos.html">Mamíferos</a></li>
+                        <li><a href="aves.html">Aves</a></li>
+                        <li><a href="reptiles.html">Reptiles</a></li>
+                        <li><a href="anfibios.html">Anfibios</a></li>
+                        
+                    </ul>
+                </li>
+                <li><a href="Animales que hicieron historia.html">Famosos</a></li>
+            <li><a href="prehistoricos.html">Prehistóricos</a></li>
+                <li><a href="mapa.html">Mapa</a></li>
+                <li><a href="#" id="animalesLink">Multimedia</a>
+                    <ul class="dropdown" id="animalDropdown">
+                        <li><a href="album.html">Imagenes</a></li>
+                        <li><a href="videos.html">Videos</a></li>
+                
+            </ul>
+        </nav>
+    </nav>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+            body {
+                background-color: rgb(207, 207, 207); /*aca pones el color que quieres */
+            }
+        </style>
+    </head>
+        <br>
+        <section class="photo-gallery">
+            <div class="photo-item">
+                <img src="leonn.jpg" alt="Foto 1">
+            </div>
+            <div class="photo-item">
+                <img src="elefantee.jpg" alt="Foto 2">
+            </div>
+            <div class="photo-item">
+                <img src="tajacu.jpg" alt="Foto 3">
+            </div>
+            <div class="photo-item">
+                <img src="foca.jpg" alt="Foto 4">
+            </div>
+            <div class="photo-item">
+                <img src="llama.jpg" alt="Foto 5">
+            </div>
+            <div class="photo-item">
+                <img src="gato colorado.jpg" alt="foto 6">
+            </div>
+            <div class="photo-item">
+                <img src="panda rojo.jpg" alt="foto 7">
+            </div>
+            <div class="photo-item">
+                <img src="panda.jpg" alt="Foto 8">
+            </div>
+            <div class="photo-item">
+                <img src="oso hormiguero.jpg" alt="foto 9">
+            </div>
+            <div class="photo-item">
+                <img src="yaguarete.jpg" alt="foto 10">
+            </div>
+            <div class="photo-item">
+                <img src="tapir.jpg" alt="Foto 11">
+            </div>
+            <div class="photo-item">
+                <img src="koala.jpg" alt="foto 12">
+            </div>
+            <div class="photo-item">
+                <img src="kanguro.jpg" alt="foto 13">
+            </div>
+            <div class="photo-item">
+                <img src="demonio de tasmania.jpg" alt="foto 14">
+            </div>
+            <div class="photo-item">
+                <img src="aguila calva.jpg" alt="foto 15">
+            </div>
+        </section>
+
+        
+    
+        <!-- Modal para el slider -->
+        <div class="modal" id="photoModal">
+            <span class="close-modal">&times;</span>
+            <div class="modal-content">
+                <img id="modal-image" src="" alt="Foto Modal">
+            </div>
+            <div class="modal-navigation">
+                <span class="prev">&lt;</span>
+                <span class="next">&gt;</span>
+            </div>
+        </div>
+    
+        <script>
+            // Variables para el modal
+            var modal = document.getElementById('photoModal');
+            var modalImg = document.getElementById('modal-image');
+            var photos = document.querySelectorAll('.photo-item img');
+            var currentPhotoIndex;
+    
+            // Función para abrir el modal con la imagen seleccionada
+            photos.forEach((photo, index) => {
+                photo.onclick = function() {
+                    modal.style.display = 'block';
+                    modalImg.src = this.src;
+                    currentPhotoIndex = index;
+                };
+            });
+    
+            // Función para cerrar el modal
+            var closeModal = document.querySelector('.close-modal');
+            closeModal.onclick = function() {
+                modal.style.display = 'none';
+            };
+    
+            // Función para navegar entre imágenes (anterior y siguiente)
+            var next = document.querySelector('.next');
+            var prev = document.querySelector('.prev');
+    
+            next.onclick = function() {
+                currentPhotoIndex = (currentPhotoIndex + 1) % photos.length;
+                modalImg.src = photos[currentPhotoIndex].src;
+            };
+    
+            prev.onclick = function() {
+                currentPhotoIndex = (currentPhotoIndex - 1 + photos.length) % photos.length;
+                modalImg.src = photos[currentPhotoIndex].src;
+            };
+        </script>
+
+
+        
+    
+    <br>
+        <footer>
+            <p>&copy; 2024 Documental de la Vida Salvaje. Creado por Marco y Carlos.</p>
+        </footer>
+    
+</header>
+</body>
+</html>

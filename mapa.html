@@ -1,0 +1,1043 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Documental sobre la vida salvaje y los animales más impresionantes del planeta.">
+    <title>Documental de Animales</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+      <div class="wrapper">
+        <h1>Mapa Interactivo de Animales del Mundo</h1>
+            <nav>
+                <ul>
+                    <li><a href="tex.html">Inicio</a></li>
+                <li><a href="#" id="animalesLink">Animales</a>
+                    <ul class="dropdown" id="animalDropdown">
+    
+                        <li><a href="mamiferos.html">Mamíferos</a></li>
+                        <li><a href="aves.html">Aves</a></li>
+                         <li><a href="reptiles.html">Reptiles</a></li>
+                         <li> <a href="anfibios.html">Anfibios</a></li>
+                     </ul>
+                 </li>
+                 <li><a href="Animales que hicieron historia.html">Famosos</a></li>
+                 <li><a href="prehistoricos.html">Prehistóricos</a></li>
+                 <li><a href="mapa.html">Mapa</a></li>
+                 <li><a href="#" id="animalesLink">Multimedia</a>
+                    <ul class="dropdown" id="animalDropdown">
+                        <li><a href="album.html">Imagenes</a></li>
+                        <li><a href="videos.html">Videos</a></li>
+                 
+            </ul>
+        </nav>
+    
+        <head>
+            <!-- Incluye los archivos CSS y JS de Leaflet -->
+            <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+            <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+        
+            <style>
+                #map {
+                    height: 600px; /* Ajusta la altura del mapa */
+                    width: 100%; /* El mapa tomará todo el ancho del contenedor */
+                }
+                
+                /* Estilos para la caja de información de animales */
+                .animal-info {
+                    position: relative;
+                    margin-top: 10px;
+                    padding: 10px;
+                    background-color: #000000;
+                    border: 1px solid #ddd;
+                    font-size: 25px;
+                    text-align: center;/*Nombre de los animales al centro*/
+                }
+                nav {
+                   position: relative;
+                   z-index: 100; /*menú esté sobre el mapa */
+                }
+
+                #map {
+                   position: relative;
+                   z-index: 1; /*mapa detrás del menú */
+                }
+
+                
+
+            </style>
+
+        </head>
+        <body>
+            
+        
+            <!-- Contenedor del mapa -->
+            <div id="map"></div>
+        
+            <!-- Caja para mostrar la información de animales -->
+            <div id="animal-info" class="animal-info">
+                Pasa el puntero sobre una región para ver los animales típicos.
+            </div>
+            
+                <!-- Incluye los archivos CSS y JS de Leaflet -->
+                <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+                <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+            
+        
+</head>
+
+            <script>
+                // Inicia el mapa y lo centra en una coordenada
+                var map = L.map('map').setView([20, 0], 2); // Coordenadas iniciales (lat, long) y zoom
+            
+                // Añadir un mapa base de OpenStreetMap
+                L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+                }).addTo(map);
+            
+                // Añadir marcadores de diferentes zonas con información sobre animales
+                var africa = L.marker([1.3521, 32.2903]).addTo(map)
+                    .bindPopup('Animales típicos: León, Elefante, Jirafa');
+                
+                var australia = L.marker([-25.2744, 133.7751]).addTo(map)
+                    .bindPopup('Africa: Canguro, Koala, Demonio de Tasmania');
+                
+                var asia = L.marker([34.0479, 100.6197]).addTo(map)
+                    .bindPopup('Asia: Tigre, Panda, Panda Rojo');
+                
+                var southAmerica = L.marker([-14.2350, -51.9253]).addTo(map)
+                    .bindPopup('Brazil: Jaguar, Llama, Tajacu');
+
+                var peru = L.marker([-9.19, -75.0152]).addTo(map)
+                    .bindPopup('Perú: Llama, Cóndor, Jaguar');
+
+                var antartida = L.marker([-82.8628, 135.0000]).addTo(map)
+                    .bindPopup('Antartida: Pingüino, Foca, Ballena');
+
+                var canada = L.marker([56.1304, -106.3468]).addTo(map)
+                    .bindPopup('Canada: Oso polar, Castor, Alce');
+
+                var chile = L.marker([-35.6751, -71.5430]).addTo(map)
+                 .bindPopup('Chile: Huemul, Guanaco, Gato colorado');
+
+                var argentina = L.marker([-38.4161, -63.6167]).addTo(map)
+                 .bindPopup('Argentina: Pingüino de Magallanes, hornero, Merluza negra');
+
+                var colombia = L.marker([4.5709, -74.2973]).addTo(map)
+                 .bindPopup('Colombia: Anaconda,Oso de anteojos,Mono Araña');
+
+                var bolivia = L.marker([-16.2902, -63.5887]).addTo(map)
+                 .bindPopup('Bolivia: Puma, Capibara, Caimán');
+
+                var paraguay = L.marker([-23.4425, -58.4438]).addTo(map)
+                 .bindPopup('Paraguay: Tapir, Capibara, Yaguareté');
+
+                var mexico = L.marker([23.6345, -102.5528]).addTo(map)
+                 .bindPopup('México: Jaguar, Guacamayo, Coyote');
+
+                var venezuela = L.marker([6.4238, -66.5897]).addTo(map)
+                 .bindPopup('Venezuela: Paují de copete, Delfín del Orinoco, Águila harpía');
+
+                var republica_dominicana = L.marker([18.7357, -70.1627]).addTo(map)
+                 .bindPopup('Republica Dominicana: Solenodonte haitiano, Manatí antillano, Jutía');
+
+                var panama = L.marker([8.5380, -80.7821]).addTo(map)
+                 .bindPopup('Panama: Perezoso de tres dedos, Rana dorada de Panamá, Tucán');
+
+                var honduras = L.marker([15.2000, -86.2419]).addTo(map)
+                 .bindPopup('Honduras: Guacamaya roja, Tapir centroamericano, Mono aullador');
+
+                var cuba = L.marker([21.5218, -77.7812]).addTo(map)
+                 .bindPopup('Cuba: Solenodonte cubano, Almiquí, Iguana cubana');
+
+                var usa = L.marker([37.0902, -95.7129]).addTo(map)
+                 .bindPopup('Usa: Águila calva, Bisonte americano, Oso pardo');
+
+
+                
+                // Detectar cuando el cursor pasa sobre un marcador y mostrar imágenes
+                
+                usa.on('mouseover', function () {
+                    document.getElementById('animal-info').innerHTML = `
+                    <head>
+                 <meta charset="UTF-8">
+                 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                 <title>Animales</title>
+                <style>
+            body {
+               font-family: sans-serif;
+            }
+                .container {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+               .image-container {
+               display: flex;
+               flex-direction: column;
+               align-items: center;
+               margin: 20px;
+            }
+              .text {
+              text-align: center;
+            }
+           </style>
+    </head>
+<body>
+            <div class="container">
+            <div class="image-container">
+            <img src="aguila calva.jpg" alt="Águila Calva">
+            <div class="text"><li><a href="Águila Calva.html">Águila Calva</a> </li>este es mas abajo</div>
+        </div>
+           <div class="image-container">
+           <img src="bisonte americano.jpg" alt="Bisonte Americano">
+           <div class="text"><li><a href="Bisonte Americano.html">Bisonte Americano</a> </li>este es mas abajo</div>
+        </div>
+          <div class="image-container">
+          <img src="oso pardo.jpg" alt="Oso Pardo">
+          <div class="text"><li><a href="Oso Pardo.html">Oso Pardo</a> </li>este es mas abajo</div>
+        </div>
+    </div>
+</body>
+                    `;
+                    
+                });
+
+                republica_dominicana.on('mouseover', function () {
+                     document.getElementById('animal-info').innerHTML = `
+                    <head>
+                 <meta charset="UTF-8">
+                 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                 <title>Animales</title>
+                <style>
+            body {
+               font-family: sans-serif;
+            }
+                .container {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+               .image-container {
+               display: flex;
+               flex-direction: column;
+               align-items: center;
+               margin: 20px;
+            }
+              .text {
+              text-align: center;
+            }
+           </style>
+    </head>
+<body>
+            <div class="container">
+            <div class="image-container">
+            <img src="solenodonde haitiano.jpg" alt="Solenodonde Haitiano">
+            <div class="text"><li><a href="Solenodonde Haitiano.html">Solenodonde Haitiano</a> </li>este es mas abajo</div>
+        </div>
+           <div class="image-container">
+           <img src="manati antillano.jpg" alt="Manati Antillano">
+           <div class="text"><li><a href="Manati Antillano.html">Manati Antillano</a> </li>este es mas abajo</div>
+        </div>
+          <div class="image-container">
+          <img src="jutia.jpg" alt="Jutia">
+          <div class="text"><li><a href="Jutia.html">Jutia</a> </li>este es mas abajo</div>
+        </div>
+    </div>
+</body>
+                    `;
+                });
+
+                panama.on('mouseover', function () {
+                      document.getElementById('animal-info').innerHTML = `
+                        
+                <head>
+                 <meta charset="UTF-8">
+                 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                 <title>Animales</title>
+                <style>
+            body {
+               font-family: sans-serif;
+            }
+                .container {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+               .image-container {
+               display: flex;
+               flex-direction: column;
+               align-items: center;
+               margin: 20px;
+            }
+              .text {
+              text-align: center;
+            }
+           </style>
+    </head>
+<body>
+            <div class="container">
+            <div class="image-container">
+            <img src="perezoso de 3 dedos.jpg" alt="Perezoso de tres dedo">
+            <div class="text"><li><a href="Perezoso de tres dedos.html">Perezoso de tres dedos</a> </li>este es mas abajo</div>
+        </div>
+           <div class="image-container">
+           <img src="rana dorada.jpg" alt="Rana Dorada">
+           <div class="text"><li><a href="Rana Dorada.html">Rana Dorada</a> </li>este es mas abajo</div>
+        </div>
+          <div class="image-container">
+          <img src="tucan.jpg" alt="Tucan">
+          <div class="text"><li><a href="Tucan.html">Tucan</a> </li>este es mas abajo</div>
+        </div>
+    </div>
+</body>            `;
+                });
+
+                honduras.on('mouseover', function () {
+                    document.getElementById('animal-info').innerHTML = `
+                    <head>
+                 <meta charset="UTF-8">
+                 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                 <title>Animales</title>
+                <style>
+            body {
+               font-family: sans-serif;
+            }
+                .container {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+               .image-container {
+               display: flex;
+               flex-direction: column;
+               align-items: center;
+               margin: 20px;
+            }
+              .text {
+              text-align: center;
+            }
+           </style>
+    </head>
+<body>
+            <div class="container">
+            <div class="image-container">
+            <img src="guacamaya roja.jpg" alt="Guacamaya Roja">
+            <div class="text"><li><a href="Guacamaya Roja.html">Guacamaya Roja</a> </li>este es mas abajo</div>
+        </div>
+           <div class="image-container">
+           <img src="jabalí.jpg" alt="jabalí">
+           <div class="text"><li><a href="Jabalí.html">Jabalí</a> </li>este es mas abajo</div>
+        </div>
+          <div class="image-container">
+          <img src="mono aullador.jpg" alt="Mono Aullador">
+          <div class="text"><li><a href="TMono Aullador.html">Mono Aullador</a> </li>este es mas abajo</div>
+        </div>
+    </div>
+</body>  
+                    `;
+                });
+
+                cuba.on('mouseover', function () {
+                    document.getElementById('animal-info').innerHTML = `
+                    <head>
+                 <meta charset="UTF-8">
+                 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                 <title>Animales</title>
+                <style>
+            body {
+               font-family: sans-serif;
+            }
+                .container {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+               .image-container {
+               display: flex;
+               flex-direction: column;
+               align-items: center;
+               margin: 20px;
+            }
+              .text {
+              text-align: center;
+            }
+           </style>
+    </head>
+<body>
+            <div class="container">
+            <div class="image-container">
+            <img src="solenodonte cubano.jpg" alt="Solenodonte Cubano">
+            <div class="text"><li><a href="Solenodonte Cubano.html">Solenodonte Cubano</a> </li>este es mas abajo</div>
+        </div>
+           <div class="image-container">
+           <img src="almaniqui.jpg" alt="Almaniqui">
+           <div class="text"><li><a href="TAlmaniqui.html">Almaniqui</a> </li>este es mas abajo</div>
+        </div>
+          <div class="image-container">
+          <img src="iguana cubana.jpg" alt="Iguana cubana">
+          <div class="text"><li><a href="Iguana cubana.html">TIguana cubana</a> </li>este es mas abajo</div>
+        </div>
+    </div>
+</body>  
+                    `;
+                });
+
+                venezuela.on('mouseover', function () {
+                    document.getElementById('animal-info').innerHTML = `
+                    <head>
+                 <meta charset="UTF-8">
+                 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                 <title>Animales</title>
+                <style>
+            body {
+               font-family: sans-serif;
+            }
+                .container {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+               .image-container {
+               display: flex;
+               flex-direction: column;
+               align-items: center;
+               margin: 20px;
+            }
+              .text {
+              text-align: center;
+            }
+           </style>
+    </head>
+<body>
+            <div class="container">
+            <div class="image-container">
+            <img src="pauji de copete.jpg" alt="Pauji de copete">
+            <div class="text"><li><a href="Pauji de copeter.html">Pauji de copete</a> </li>ste es mas abajo</div>
+        </div>
+           <div class="image-container">
+           <img src="delfin del orinico.jpg" alt="Delfin del Orinico">
+           <div class="text"><li><a href="Delfin del Orinico.html">MDelfin del Orinico</a> </li>este es mas abajo</div>
+        </div>
+          <div class="image-container">
+          <img src="aguila harpia.jpg" alt="Águila Harpía">
+          <div class="text"><li><a href="Águila Harpía.html">Águila Harpía</a> </li>este es mas abajo</div>
+        </div>
+    </div>
+</body>
+                    `;
+                });
+
+                chile.on('mouseover', function () {
+                    document.getElementById('animal-info').innerHTML = `
+                    <head>
+                 <meta charset="UTF-8">
+                 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                 <title>Animales</title>
+                <style>
+            body {
+               font-family: sans-serif;
+               
+            }
+                .container {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                
+            }
+               .image-container {
+               display: flex;
+               flex-direction: column;
+               align-items: center;
+               margin: 20px;
+               
+            }
+              .text {
+              text-align: center;
+              
+            }
+            
+           </style>
+    </head>
+<body>
+            <div class="container">
+            <div class="image-container">
+            <img src="huemul.jpg" alt="Huemul">
+            <div class="text"><li><a href="Huemul.html">Huemul</a> </li>este es mas abajo</div>
+        </div>
+           <div class="image-container">
+           <img src="guanaco.jpg" alt="Guanaco">
+           <div class="text"><li><a href="Guanaco.html">Guanaco</a> </li>este es mas abajo</div>
+        </div>
+          <div class="image-container">
+          <img src="gato colorado.jpg" alt="Gato Colorado">
+          <div class="text"><li><a href="Gato Colorado.html">Gato Colorado</a> </li>este es mas abajo</div>
+        </div>
+    </div>
+</body>
+                    `;
+                });
+
+                argentina.on('mouseover', function () {
+                    document.getElementById('animal-info').innerHTML = `
+                    <head>
+                 <meta charset="UTF-8">
+                 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                 <title>Animales</title>
+                <style>
+            body {
+               font-family: sans-serif;
+            }
+                .container {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+               .image-container {
+               display: flex;
+               flex-direction: column;
+               align-items: center;
+               margin: 20px;
+            }
+              .text {
+              text-align: center;
+            }
+           </style>
+    </head>
+<body>
+            <div class="container">
+            <div class="image-container">
+            <img src="pinguino de magallanes.jpg" alt="Pinguino de Magallanes">
+            <div class="text"><li><a href="Pinguino de Magallanes.html">Pinguino de Magallanes</a> </li>este es mas abajo</div>
+        </div>
+           <div class="image-container">
+           <img src="hornero.jpg" alt="Hornero">
+           <div class="text"><li><a href="Hornero.html">Hornero</a> </li>este es mas abajo</div>
+        </div>
+          <div class="image-container">
+          <img src="merluza negra.jpg" alt="Merluza Negra">
+          <div class="text"><li><a href="Merluza Negra.html">Merluza Negrar</a> </li>este es mas abajo</div>
+        </div>
+    </div>
+</body>
+                    `;
+                });
+
+                colombia.on('mouseover', function () {
+                    document.getElementById('animal-info').innerHTML = `
+                    <head>
+                 <meta charset="UTF-8">
+                 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                 <title>Animales</title>
+                <style>
+            body {
+               font-family: sans-serif;
+            }
+                .container {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+               .image-container {
+               display: flex;
+               flex-direction: column;
+               align-items: center;
+               margin: 20px;
+            }
+              .text {
+              text-align: center;
+            }
+           </style>
+    </head>
+<body>
+            <div class="container">
+            <div class="image-container">
+            <img src="anaconda.jpg" alt="Anaconda">
+            <div class="text"><li><a href="Anaconda.html">Anaconda</a> </li>este es mas abajo</div>
+        </div>
+           <div class="image-container">
+           <img src="oso de anteojos.jpg" alt="Oso de anteojos">
+           <div class="text"><li><a href="Oso de anteojos.html">Oso de anteojos</a> </li>este es mas abajo</div>
+        </div>
+          <div class="image-container">
+          <img src="mono araña colombiano.jpg" alt="Mono Araña Comlombiano">
+          <div class="text"><li><a href="Mono Araña Comlombiano.html">Mono Araña Comlombiano</a> </li>este es mas abajo</div>
+        </div>
+    </div>
+</body>
+                    `;
+                });
+
+                bolivia.on('mouseover', function () {
+                    document.getElementById('animal-info').innerHTML = `
+                    <head>
+                 <meta charset="UTF-8">
+                 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                 <title>Animales</title>
+                <style>
+            body {
+               font-family: sans-serif;
+            }
+                .container {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+               .image-container {
+               display: flex;
+               flex-direction: column;
+               align-items: center;
+               margin: 20px;
+            }
+              .text {
+              text-align: center;
+            }
+           </style>
+    </head>
+<body>
+            <div class="container">
+            <div class="image-container">
+            <img src="puma.jpg" alt="Puma">
+            <div class="text"><li><a href="Puma.html">Puma</a> </li>este es mas abajo</div>
+        </div>
+           <div class="image-container">
+           <img src="capibara.jpg" alt="Capibara">
+           <div class="text"><li><a href="Capibara.html">Capibara</a> </li>este es mas abajo</div>
+        </div>
+          <div class="image-container">
+          <img src="caiman.jpg" alt="Caiman">
+          <div class="text"><li><a href="Caiman.html">Caiman</a> </li>este es mas abajo</div>
+        </div>
+    </div>
+</body>
+                    `;
+                });
+
+                paraguay.on('mouseover', function () {
+                    document.getElementById('animal-info').innerHTML = `
+                    <head>
+                 <meta charset="UTF-8">
+                 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                 <title>Animales</title>
+                <style>
+            body {
+               font-family: sans-serif;
+            }
+                .container {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+               .image-container {
+               display: flex;
+               flex-direction: column;
+               align-items: center;
+               margin: 20px;
+            }
+              .text {
+              text-align: center;
+            }
+           </style>
+    </head>
+<body>
+            <div class="container">
+            <div class="image-container">
+            <img src="tapir.jpg" alt="Tapir">
+            <div class="text"><li><a href="Tapir.html">Tapir</a> </li>este es mas abajo</div>
+        </div>
+           <div class="image-container">
+           <img src="oso hormiguero.jpg" alt="oso hormiguero">
+           <div class="text"><li><a href="Oso Hormiguero.html">Oso Hormiguero</a> </li>este es mas abajo</div>
+        </div>
+          <div class="image-container">
+          <img src="yaguarete.jpg" alt="Yaguarete">
+          <div class="text"><li><a href="Yaguareté.html">Yaguareté</a> </li>este es mas abajo</div>
+        </div>
+    </div>
+</body>
+                    `;
+                });
+
+                mexico.on('mouseover', function () {
+                    document.getElementById('animal-info').innerHTML = `
+                    <head>
+                 <meta charset="UTF-8">
+                 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                 <title>Animales</title>
+                <style>
+            body {
+               font-family: sans-serif;
+            }
+                .container {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+               .image-container {
+               display: flex;
+               flex-direction: column;
+               align-items: center;
+               margin: 20px;
+            }
+              .text {
+              text-align: center;
+            }
+           </style>
+    </head>
+<body>
+            <div class="container">
+            <div class="image-container">
+            <img src="jaguar.jpg" alt="Jaguar">
+            <div class="text"><li><a href="Jaguar.html">Jaguar</a> </li>este es mas abajo</div>
+        </div>
+           <div class="image-container">
+           <img src="guacamayo.jpg" alt="Guacamayo">
+           <div class="text"><li><a href="Guacamayo.html">Guacamayo</a> </li>este es mas abajo</div>
+        </div>
+          <div class="image-container">
+          <img src="coyote.jpg" alt="Coyote">
+          <div class="text"><li><a href="Coyote.html">Coyote</a> </li>este es mas abajo</div>
+        </div>
+    </div>
+</body>
+                    `;
+                });
+
+                canada.on('mouseover', function () {
+                    document.getElementById('animal-info').innerHTML = `
+                    <head>
+                 <meta charset="UTF-8">
+                 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                 <title>Animales</title>
+                <style>
+            body {
+               font-family: sans-serif;
+            }
+                .container {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+               .image-container {
+               display: flex;
+               flex-direction: column;
+               align-items: center;
+               margin: 20px;
+            }
+              .text {
+              text-align: center;
+            }
+           </style>
+    </head>
+<body>
+            <div class="container">
+            <div class="image-container">
+            <img src="oso pardo.jpg" alt="Oso Pardo">
+            <div class="text"><li><a href="Oso Pardo.html">Oso Pardo</a> </li>este es mas abajo</div>
+        </div>
+           <div class="image-container">
+           <img src="castor.jpg" alt="Castor">
+           <div class="text"><li><a href="Castor.html">Castor</a> </li>este es mas abajo</div>
+        </div>
+          <div class="image-container">
+          <img src="alce.jpg" alt="Alce">
+          <div class="text"><li><a href="Alce.html">Alce</a> </li>este es mas abajo</div>
+        </div>
+    </div>
+</body>
+                    `;
+                });
+
+                antartida.on('mouseover', function () {
+                    document.getElementById('animal-info').innerHTML = `
+                    <head>
+                 <meta charset="UTF-8">
+                 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                 <title>Animales</title>
+                <style>
+            body {
+               font-family: sans-serif;
+            }
+                .container {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+               .image-container {
+               display: flex;
+               flex-direction: column;
+               align-items: center;
+               margin: 20px;
+            }
+              .text {
+              text-align: center;
+            }
+           </style>
+    </head>
+<body>
+            <div class="container">
+            <div class="image-container">
+            <img src="pinguinoo.jpg" alt="Pingüino">
+            <div class="text"><li><a href="Pingüino.html">Pingüino</a> </li>este es mas abajo</div>
+        </div>
+           <div class="image-container">
+           <img src="foca.jpg" alt="Foca">
+           <div class="text"><li><a href="Foca.html">Foca</a> </li>este es mas abajo</div>
+        </div>
+          <div class="image-container">
+          <img src="ballena.jpg" alt="Ballena">
+          <div class="text"><li><a href="Ballena.html">Ballena</a> </li>este es mas abajo</div>
+        </div>
+    </div>
+</body>
+                    `;
+                });
+
+                peru.on('mouseover', function () {
+                    document.getElementById('animal-info').innerHTML = `
+                    <head>
+                 <meta charset="UTF-8">
+                 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                 <title>Animales</title>
+                <style>
+            body {
+               font-family: sans-serif;
+            }
+                .container {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+               .image-container {
+               display: flex;
+               flex-direction: column;
+               align-items: center;
+               margin: 20px;
+            }
+              .text {
+              text-align: center;
+            }
+           </style>
+    </head>
+<body>
+            <div class="container">
+            <div class="image-container">
+            <img src="llama.jpg" alt="Llama">
+            <div class="text"><li><a href="Llama.html">Llama</a> </li>este es mas abajo</div>
+        </div>
+           <div class="image-container">
+           <img src="condor.jpg" alt="Condor">
+           <div class="text"><li><a href="Cóndor.html">Cóndor</a> </li>este es mas abajo</div>
+        </div>
+          <div class="image-container">
+          <img src="jaguar.jpg" alt="Jaguar">
+          <div class="text"><li><a href="Jaguar.html">Jaguar</a> </li>este es mas abajo</div>
+        </div>
+    </div>
+</body>
+                    `;
+                });
+
+                africa.on('mouseover', function () {
+                    document.getElementById('animal-info').innerHTML = `
+                    <head>
+                 <meta charset="UTF-8">
+                 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                 <title>Animales</title>
+                <style>
+            body {
+               font-family: sans-serif;
+            }
+                .container {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+               .image-container {
+               display: flex;
+               flex-direction: column;
+               align-items: center;
+               margin: 20px;
+            }
+              .text {
+              text-align: center;
+            }
+           </style>
+    </head>
+<body>
+            <div class="container">
+            <div class="image-container">
+            <img src="leonn.jpg" alt="León">
+            <div class="text"><li><a href="León.html">León</a> </li>este es mas abajo</div>
+        </div>
+           <div class="image-container">
+           <img src="elefantee.jpg" alt="Elefante">
+           <div class="text"><li><a href="lefante.html">lefante</a> </li>este es mas abajo</div>
+        </div>
+          <div class="image-container">
+          <img src="jirafa.jpg" alt="Jirafa">
+          <div class="text"><li><a href="Jirafa.html">Jirafa</a> </li>este es mas abajo</div>
+        </div>
+    </div>
+</body>
+                    `;
+                });
+                
+                australia.on('mouseover', function () {
+                    document.getElementById('animal-info').innerHTML = `
+                    <head>
+                 <meta charset="UTF-8">
+                 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                 <title>Animales</title>
+                <style>
+            body {
+               font-family: sans-serif;
+            }
+                .container {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+               .image-container {
+               display: flex;
+               flex-direction: column;
+               align-items: center;
+               margin: 20px;
+            }
+              .text {
+              text-align: center;
+            }
+           </style>
+    </head>
+<body>
+            <div class="container">
+            <div class="image-container">
+            <img src="canguroo.jpg" alt="Canguro">
+            <div class="text"><li><a href="Canguro.html">Canguro</a> </li>este es mas abajo</div>
+        </div>
+           <div class="image-container">
+           <img src="koala.jpg" alt="Koala">
+           <div class="text"><li><a href="Koala.html">Koala</a> </li>este es mas abajo</div>
+        </div>
+          <div class="image-container">
+          <img src="demonio de tasmania.jpg" alt="Demonio de Tasmania">
+          <div class="text"><li><a href="Demonio de Tasmania.html">Demonio de Tasmania</a> </li>este es mas abajo</div>
+        </div>
+    </div>
+</body>
+                    `;
+                });
+                
+                asia.on('mouseover', function () {
+                    document.getElementById('animal-info').innerHTML = `
+                    <head>
+                 <meta charset="UTF-8">
+                 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                 <title>Animales</title>
+                <style>
+            body {
+               font-family: sans-serif;
+            }
+                .container {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+               .image-container {
+               display: flex;
+               flex-direction: column;
+               align-items: center;
+               margin: 20px;
+            }
+              .text {
+              text-align: center;
+            }
+           </style>
+    </head>
+<body>
+            <div class="container">
+            <div class="image-container">
+            <img src="tigree.jpg" alt="Tigre">
+            <div class="text"><li><a href="Tigre.html">Tigre</a> </li>este es mas abajo</div>
+        </div>
+           <div class="image-container">
+           <img src="panda.jpg" alt="Panda">
+           <div class="text"><li><a href="Panda.html">Panda</a> </li>este es mas abajo</div>
+        </div>
+          <div class="image-container">
+          <img src="panda rojo.jpg" alt="Panda Rojo">
+          <div class="text"><li><a href="Panda Rojo.html">Panda Rojo</a> </li>este es mas abajo</div>
+        </div>
+    </div>
+</body>
+                    `;
+                });
+                
+                
+                southAmerica.on('mouseover', function () {
+                    document.getElementById('animal-info').innerHTML = `
+                    <head>
+                 <meta charset="UTF-8">
+                 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                 <title>Animales</title>
+                <style>
+            body {
+               font-family: sans-serif;
+            }
+                .container {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+               .image-container {
+               display: flex;
+               flex-direction: column;
+               align-items: center;
+               margin: 20px;
+            }
+              .text {
+              text-align: center;
+            }
+           </style>
+    </head>
+<body>
+            <div class="container">
+            <div class="image-container">
+            <img src="jaguar.jpg" alt="Jaguar">
+            <div class="text"><li><a href="Jaguar.html">Jaguar</a> </li>este es mas abajo</div>
+        </div>
+           <div class="image-container">
+           <img src="Boa constrictora.jpg" alt="Boa constrictora">
+           <div class="text"><li><a href="Boa constrictora.html">Boa constrictora</a> </li>este es mas abajo</div>
+        </div>
+          <div class="image-container">
+          <img src="tajacu.jpg" alt="Tajacu">
+          <div class="text"><li><a href="Tajacu.html">Tajacu</a> </li>este es mas abajo</div>
+        </div>
+    </div>
+</body>
+                    `;
+                });
+                
+                
+        // Restablecer información cuando se hace clic fuera de los marcadores
+        map.on('click', function (e) {
+            document.getElementById('animal-info').innerHTML = 'Pasa el puntero sobre una región para ver los animales típicos.';
+        });
+
+        
+            </script>
+            
+        </body>
+                
+</header>
+
+<footer>
+    <p>&copy; 2024 Documental de la Vida Salvaje. Creado por Marco y Carlos.</p>
+</footer>
+
+
+</body>
+</html>
